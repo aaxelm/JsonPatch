@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using Marvin.JsonPatch.NetStandard.Properties;
 using Newtonsoft.Json.Serialization;
-using Marvin.JsonPatch.Properties;
 
 namespace Marvin.JsonPatch.Internal
 {
@@ -167,14 +167,14 @@ namespace Marvin.JsonPatch.Internal
             if (!int.TryParse(segment, out index))
             {
                 value = null;
-                errorMessage = Resources.FormatInvalidIndexValue(segment);
+                errorMessage = string.Format(Resources.InvalidIndexValue, segment);
                 return false;
             }
 
             if (index < 0 || index >= list.Count)
             {
                 value = null;
-                errorMessage = Resources.FormatIndexOutOfBounds(segment);
+                errorMessage = string.Format(Resources.IndexOutOfBounds, segment);
                 return false;
             }
 
@@ -194,7 +194,7 @@ namespace Marvin.JsonPatch.Internal
             if (!conversionResult.CanBeConverted)
             {
                 convertedValue = null;
-                errorMessage = Resources.FormatInvalidValueForProperty(originalValue);
+                errorMessage = string.Format(Resources.InvalidValueForProperty, originalValue);
                 return false;
             }
 
@@ -209,7 +209,7 @@ namespace Marvin.JsonPatch.Internal
             var listType = list.GetType();
             if (listType.IsArray)
             {
-                errorMessage = Resources.FormatPatchNotSupportedForArrays(listType.FullName);
+                errorMessage = string.Format(Resources.PatchNotSupportedForArrays, listType.FullName);
                 listTypeArgument = null;
                 return false;
             }
@@ -218,7 +218,7 @@ namespace Marvin.JsonPatch.Internal
                 var genericList = listType.GetType();
                 if (genericList == null)
                 {
-                    errorMessage = Resources.FormatPatchNotSupportedForNonGenericLists(listType.FullName);
+                    errorMessage = string.Format(Resources.PatchNotSupportedForNonGenericLists, listType.FullName);
                     listTypeArgument = null;
                     return false;
                 }
@@ -265,14 +265,14 @@ namespace Marvin.JsonPatch.Internal
                 else
                 {
                     positionInfo = new PositionInfo(PositionType.OutOfBounds, position);
-                    errorMessage = Resources.FormatIndexOutOfBounds(segment);
+                    errorMessage = string.Format(Resources.IndexOutOfBounds, segment);
                     return false;
                 }
             }
             else
             {
                 positionInfo = new PositionInfo(PositionType.Invalid, -1);
-                errorMessage = Resources.FormatInvalidIndexValue(segment);
+                errorMessage = string.Format(Resources.InvalidIndexValue, segment);
                 return false;
             }
         }

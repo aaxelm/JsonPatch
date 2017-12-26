@@ -5,8 +5,8 @@
 
 using Marvin.JsonPatch.Adapters;
 using Marvin.JsonPatch.Exceptions;
-using Marvin.JsonPatch.Properties;
 using System;
+using Marvin.JsonPatch.NetStandard.Properties;
 
 namespace Marvin.JsonPatch.Operations
 {
@@ -80,7 +80,7 @@ namespace Marvin.JsonPatch.Operations
                     throw new NotImplementedException("Test is currently not implemented.");
                 case OperationType.Invalid:
                     throw new JsonPatchException(
-                        Resources.FormatInvalidJsonPatchOperation(op), innerException: null);
+                        string.Format(Resources.InvalidJsonPatchOperation, op), innerException: null);
                 default:
                     break;
             }

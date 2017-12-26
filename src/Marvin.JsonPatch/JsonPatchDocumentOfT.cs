@@ -7,7 +7,6 @@ using Marvin.JsonPatch.Adapters;
 using Marvin.JsonPatch.Converters;
 using Marvin.JsonPatch.Helpers;
 using Marvin.JsonPatch.Operations;
-using Marvin.JsonPatch.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
@@ -15,6 +14,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using Marvin.JsonPatch.NetStandard.Properties;
 
 // Implementation details: the purpose of this type of patch document is to ensure we can do type-checking
 // when producing a JsonPatchDocument.  However, we cannot send this "typed" over the wire, as that would require
@@ -766,7 +766,7 @@ namespace Marvin.JsonPatch
                     return listOfSegments;
 
                 default:
-                    throw new InvalidOperationException(Resources.FormatExpressionTypeNotSupported(expr));
+                    throw new InvalidOperationException(string.Format(Resources.ExpressionTypeNotSupported, expr));
             }
         }
 

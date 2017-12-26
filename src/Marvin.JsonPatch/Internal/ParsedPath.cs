@@ -1,8 +1,8 @@
 ﻿using Marvin.JsonPatch.Exceptions;
-using Marvin.JsonPatch.Properties;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Marvin.JsonPatch.NetStandard.Properties;
 
 namespace Marvin.JsonPatch.Internal
 {
@@ -58,7 +58,7 @@ namespace Marvin.JsonPatch.Internal
                     ++i;
                     if (i >= path.Length)
                     {
-                        throw new JsonPatchException(Resources.FormatInvalidValueForPath(path), null);
+                        throw new JsonPatchException(string.Format(Resources.InvalidValueForPath, path), null);
                     }
 
                     if (path[i] == '0')
@@ -71,7 +71,7 @@ namespace Marvin.JsonPatch.Internal
                     }
                     else
                     {
-                        throw new JsonPatchException(Resources.FormatInvalidValueForPath(path), null);
+                        throw new JsonPatchException(string.Format(Resources.InvalidValueForPath, path), null);
                     }
                 }
                 else

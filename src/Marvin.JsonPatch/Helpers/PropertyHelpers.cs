@@ -6,7 +6,6 @@
 using Marvin.JsonPatch.Exceptions;
 using Marvin.JsonPatch.Operations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;

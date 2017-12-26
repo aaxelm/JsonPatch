@@ -1,6 +1,6 @@
-﻿using Marvin.JsonPatch.Properties;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
+using Marvin.JsonPatch.NetStandard.Properties;
 
 namespace Marvin.JsonPatch.Internal
 {
@@ -53,7 +53,7 @@ namespace Marvin.JsonPatch.Internal
             if (!dictionary.ContainsKey(convertedKey))
             {
                 value = null;
-                errorMessage = Resources.FormatTargetLocationAtPathSegmentNotFound(segment);
+                errorMessage = string.Format(Resources.TargetLocationAtPathSegmentNotFound, segment);
                 return false;
             }
 
@@ -80,7 +80,7 @@ namespace Marvin.JsonPatch.Internal
             // As per JsonPatch spec, the target location must exist for remove to be successful
             if (!dictionary.ContainsKey(convertedKey))
             {
-                errorMessage = Resources.FormatTargetLocationAtPathSegmentNotFound(segment);
+                errorMessage = string.Format(Resources.TargetLocationAtPathSegmentNotFound, segment);
                 return false;
             }
 
@@ -109,7 +109,7 @@ namespace Marvin.JsonPatch.Internal
             // As per JsonPatch spec, the target location must exist for remove to be successful
             if (!dictionary.ContainsKey(convertedKey))
             {
-                errorMessage = Resources.FormatTargetLocationAtPathSegmentNotFound(segment);
+                errorMessage = string.Format(Resources.TargetLocationAtPathSegmentNotFound, segment);
                 return false;
             }
 
@@ -166,7 +166,7 @@ namespace Marvin.JsonPatch.Internal
             }
             else
             {
-                errorMessage = Resources.FormatInvalidPathSegment(key);
+                errorMessage = string.Format(Resources.InvalidPathSegment, key);
                 convertedKey = default(TKey);
                 return false;
             }
@@ -183,7 +183,7 @@ namespace Marvin.JsonPatch.Internal
             }
             else
             {
-                errorMessage = Resources.FormatInvalidValueForProperty(value);
+                errorMessage = string.Format(Resources.InvalidValueForProperty, value);
                 convertedValue = default(TValue);
                 return false;
             }

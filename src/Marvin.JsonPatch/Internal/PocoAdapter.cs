@@ -1,4 +1,4 @@
-﻿using Marvin.JsonPatch.Properties;
+﻿using Marvin.JsonPatch.NetStandard.Properties;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Linq;
@@ -16,19 +16,19 @@ namespace Marvin.JsonPatch.Internal
         {
             if (!TryGetJsonProperty(target, contractResolver, segment, out var jsonProperty))
             {
-                errorMessage = Resources.FormatTargetLocationAtPathSegmentNotFound(segment);
+                errorMessage = string.Format(Resources.TargetLocationAtPathSegmentNotFound, segment);
                 return false;
             }
 
             if (!jsonProperty.Writable)
             {
-                errorMessage = Resources.FormatCannotUpdateProperty(segment);
+                errorMessage = string.Format(Resources.CannotUpdateProperty, segment);
                 return false;
             }
 
             if (!TryConvertValue(value, jsonProperty.PropertyType, out var convertedValue))
             {
-                errorMessage = Resources.FormatInvalidValueForProperty(value);
+                errorMessage = string.Format(Resources.InvalidValueForProperty, value);
                 return false;
             }
 
@@ -47,14 +47,14 @@ namespace Marvin.JsonPatch.Internal
         {
             if (!TryGetJsonProperty(target, contractResolver, segment, out var jsonProperty))
             {
-                errorMessage = Resources.FormatTargetLocationAtPathSegmentNotFound(segment);
+                errorMessage = string.Format(Resources.TargetLocationAtPathSegmentNotFound, segment);
                 value = null;
                 return false;
             }
 
             if (!jsonProperty.Readable)
             {
-                errorMessage = Resources.FormatCannotReadProperty(segment);
+                errorMessage = string.Format(Resources.CannotReadProperty, segment);
                 value = null;
                 return false;
             }
@@ -72,13 +72,13 @@ namespace Marvin.JsonPatch.Internal
         {
             if (!TryGetJsonProperty(target, contractResolver, segment, out var jsonProperty))
             {
-                errorMessage = Resources.FormatTargetLocationAtPathSegmentNotFound(segment);
+                errorMessage = string.Format(Resources.TargetLocationAtPathSegmentNotFound, segment);
                 return false;
             }
 
             if (!jsonProperty.Writable)
             {
-                errorMessage = Resources.FormatCannotUpdateProperty(segment);
+                errorMessage = string.Format(Resources.CannotUpdateProperty, segment);
                 return false;
             }
 
@@ -107,19 +107,19 @@ namespace Marvin.JsonPatch.Internal
         {
             if (!TryGetJsonProperty(target, contractResolver, segment, out var jsonProperty))
             {
-                errorMessage = Resources.FormatTargetLocationAtPathSegmentNotFound(segment);
+                errorMessage = string.Format(Resources.TargetLocationAtPathSegmentNotFound, segment);
                 return false;
             }
 
             if (!jsonProperty.Writable)
             {
-                errorMessage = Resources.FormatCannotUpdateProperty(segment);
+                errorMessage = string.Format(Resources.CannotUpdateProperty, segment);
                 return false;
             }
 
             if (!TryConvertValue(value, jsonProperty.PropertyType, out var convertedValue))
             {
-                errorMessage = Resources.FormatInvalidValueForProperty(value);
+                errorMessage = string.Format(Resources.InvalidValueForProperty, value);
                 return false;
             }
 
@@ -151,7 +151,7 @@ namespace Marvin.JsonPatch.Internal
             }
 
             value = null;
-            errorMessage = Resources.FormatTargetLocationAtPathSegmentNotFound(segment);
+            errorMessage = string.Format(Resources.TargetLocationAtPathSegmentNotFound, segment);
             return false;
         }
 

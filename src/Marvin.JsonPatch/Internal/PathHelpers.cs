@@ -1,5 +1,5 @@
 ﻿using Marvin.JsonPatch.Exceptions;
-using Marvin.JsonPatch.Properties;
+using Marvin.JsonPatch.NetStandard.Properties;
 
 namespace Marvin.JsonPatch.Internal
 {
@@ -13,7 +13,7 @@ namespace Marvin.JsonPatch.Internal
 
             if (path.Contains(".") || path.Contains("//") || path.Contains(" ") || path.Contains("\\"))
             {
-                throw new JsonPatchException(Resources.FormatInvalidValueForPath(path), null);
+                throw new JsonPatchException(string.Format(Resources.InvalidValueForPath, path), null);
             }
 
             if (!(path.StartsWith("/")))

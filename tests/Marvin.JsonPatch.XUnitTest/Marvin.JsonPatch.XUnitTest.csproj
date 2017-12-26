@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Marvin.JsonPatch.XUnitTest</RootNamespace>
     <AssemblyName>Marvin.JsonPatch.XUnitTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,16 +80,16 @@
     <Compile Include="SimpleObject.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Marvin.JsonPatch\Marvin.JsonPatch.csproj">
-      <Project>{82226e0c-a7b3-4bb7-8df5-7d53ec66b47a}</Project>
-      <Name>Marvin.JsonPatch</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Marvin.JsonPatch\Marvin.JsonPatch.NetStandard.csproj">
+      <Project>{c3d5181e-7cb5-4206-b0d0-4fc66e5bf471}</Project>
+      <Name>Marvin.JsonPatch.NetStandard</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

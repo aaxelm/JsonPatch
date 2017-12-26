@@ -5,12 +5,12 @@
 
 using Marvin.JsonPatch.Exceptions;
 using Marvin.JsonPatch.Operations;
-using Marvin.JsonPatch.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using Marvin.JsonPatch.NetStandard.Properties;
 
 namespace Marvin.JsonPatch.Converters
 {
@@ -26,7 +26,7 @@ namespace Marvin.JsonPatch.Converters
         {
             if (objectType != typeof(JsonPatchDocument))
             {
-                throw new ArgumentException(Resources.FormatParameterMustMatchType("objectType", "JsonPatchDocumentNew"), "objectType");
+                throw new ArgumentException(string.Format(Resources.ParameterMustMatchType, "objectType", "JsonPatchDocumentNew"), "objectType");
             }
 
             try
@@ -42,7 +42,7 @@ namespace Marvin.JsonPatch.Converters
                 // Create target object for Json => list of operations
                 var targetOperations = new List<Operation>();
 
-                // Create a new reader for this jObject, and set all properties 
+                // Create a new reader for this jObject, and set all properties
                 // to match the original reader.
                 var jObjectReader = jObject.CreateReader();
                 jObjectReader.Culture = reader.Culture;
@@ -53,14 +53,14 @@ namespace Marvin.JsonPatch.Converters
                 // Populate the object properties
                 serializer.Populate(jObjectReader, targetOperations);
 
-                // container target: the JsonPatchDocument. 
+                // container target: the JsonPatchDocument.
                 var container = new JsonPatchDocument(targetOperations, new DefaultContractResolver());
 
                 return container;
             }
             catch (Exception ex)
             {
-                throw new JsonPatchException(Resources.FormatInvalidJsonPatchDocument(objectType.Name), ex);
+                throw new JsonPatchException(string.Format(Resources.InvalidJsonPatchDocument, objectType.Name), ex);
             }
         }
 

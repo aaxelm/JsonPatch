@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Marvin.JsonPatch.Helpers
+﻿namespace Marvin.JsonPatch.Helpers
 {
     /// <summary>
     /// Return value for the helper method used by Copy/Move.  Needed to ensure we can make a different

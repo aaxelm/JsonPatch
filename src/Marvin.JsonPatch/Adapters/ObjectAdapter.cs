@@ -5,9 +5,9 @@
 
 using Marvin.JsonPatch.Internal;
 using Marvin.JsonPatch.Operations;
-using Marvin.JsonPatch.Properties;
 using Newtonsoft.Json.Serialization;
 using System;
+using Marvin.JsonPatch.NetStandard.Properties;
 
 namespace Marvin.JsonPatch.Adapters
 {
@@ -360,7 +360,7 @@ namespace Marvin.JsonPatch.Adapters
                 }
                 else
                 {
-                    var error = CreateOperationFailedError(objectToApplyTo, operation.path, operation, Resources.FormatCannotCopyProperty(operation.from));
+                    var error = CreateOperationFailedError(objectToApplyTo, operation.path, operation, string.Format(Resources.CannotCopyProperty, operation.from));
                     ErrorReporter(error);
                     return;
                 }
@@ -424,7 +424,7 @@ namespace Marvin.JsonPatch.Adapters
             return new JsonPatchError(
                 target,
                 operation,
-                errorMessage ?? Resources.FormatCannotPerformOperation(operation.op, path));
+                errorMessage ?? string.Format(Resources.CannotPerformOperation, operation.op, path));
         }
 
         private JsonPatchError CreatePathNotFoundError(object target, string path, Operation operation, string errorMessage)
@@ -432,7 +432,7 @@ namespace Marvin.JsonPatch.Adapters
             return new JsonPatchError(
                 target,
                 operation,
-                errorMessage ?? Resources.FormatTargetLocationNotFound(operation.op, path));
+                errorMessage ?? string.Format(Resources.TargetLocationNotFound, operation.op, path));
         }
     }
 }

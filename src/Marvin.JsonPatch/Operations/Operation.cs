@@ -4,8 +4,8 @@
 // Enjoy :-)
 
 using Marvin.JsonPatch.Adapters;
-using Marvin.JsonPatch.Properties;
 using System;
+using Marvin.JsonPatch.NetStandard.Properties;
 
 namespace Marvin.JsonPatch.Operations
 {
